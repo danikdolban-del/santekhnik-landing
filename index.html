@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f3">
+  <meta name="description" content="Сантехнические работы в квартирах, новостройках и частных домах. Опыт с 2010 года. Подберите нужную услугу и оставьте заявку.">
+  <title>Сантехнические работы — с 2010 года</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f7f3;
+      --white: #fff;
+      --ink: #172b35;
+      --muted: #62727a;
+      --line: #d8e0e1;
+      --blue: #11677a;
+      --blue-2: #1b8791;
+      --pale: #e8f1ef;
+      --soft: #eff2ef;
+      --warm: #e8e5dc;
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(29, 59, 68, .07);
+      font-family: "Aptos", "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button, a, input { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #37a4ad; outline-offset: 3px; }
+    .wrap { width: min(1200px, calc(100% - 56px)); margin-inline: auto; }
+    .topbar { height: 78px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(23,43,53,.09); }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 750; letter-spacing: .045em; text-transform: uppercase; }
+    .brand-mark { width: 31px; height: 31px; display: grid; place-items: center; border-radius: 9px; color: var(--white); background: var(--blue); }
+    .brand-mark svg { width: 19px; height: 19px; }
+    .nav { display: flex; align-items: center; gap: 31px; color: #44565e; font-size: 13px; }
+    .nav a { transition: color .2s ease; }
+    .nav a:hover { color: var(--blue-2); }
+    .nav-cta { color: var(--blue) !important; font-weight: 700; }
+    .hero { padding: 71px 0 62px; overflow: hidden; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--blue); font-size: 12px; font-weight: 750; letter-spacing: .105em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #32a29d; box-shadow: 0 0 0 4px rgba(50,162,157,.13); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 940px; margin: 19px 0 18px; font-size: clamp(48px, 7.1vw, 91px); line-height: .99; font-weight: 560; letter-spacing: -.063em; }
+    h1 em { color: var(--blue); font-style: normal; }
+    .hero-under { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin: 25px 0 39px; }
+    .hero-copy { max-width: 495px; color: var(--muted); font-size: 16px; line-height: 1.65; margin: 0; }
+    .hero-copy strong { color: var(--ink); font-weight: 650; }
+    .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+    .btn { min-height: 50px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-weight: 700; font-size: 14px; cursor: pointer; transition: transform .2s ease, background-color .2s ease, border-color .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: white; background: var(--blue); }
+    .btn-primary:hover { background: #0b5364; }
+    .btn-secondary { color: var(--ink); border-color: var(--line); background: transparent; }
+    .btn-secondary:hover { border-color: #9fb8bb; background: #fff; }
+    .btn .arrow { font-size: 18px; font-weight: 400; line-height: 1; }
+    .micro { color: var(--muted); font-size: 12px; }
+    .pipe-board { position: relative; min-height: 207px; overflow: hidden; border: 1px solid #dce5e1; border-radius: 20px; background: #edf2ed; }
+    .pipe-board::after { content: "СХЕМА РАБОТ"; position: absolute; right: 20px; top: 17px; z-index: 2; color: #839390; font-size: 9px; font-weight: 750; letter-spacing: .15em; }
+    .pipe-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .pipe-base { fill: none; stroke: #cfdbd8; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+    .pipe-highlight { fill: none; stroke: #408992; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: .86; }
+    .pipe-joint { fill: #edf2ed; stroke: #3f8990; stroke-width: 3; }
+    .diagram-grid { position: relative; z-index: 1; width: min(790px, 77%); min-height: 207px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; margin-left: 8%; }
+    .diagram-node { justify-self: center; width: min(190px, 100%); padding: 13px 14px; border: 1px solid rgba(23,43,53,.1); border-radius: 12px; background: rgba(255,255,255,.94); box-shadow: 0 8px 18px rgba(33,72,75,.06); text-align: left; cursor: pointer; transition: transform .2s ease, border .2s ease, box-shadow .2s ease; }
+    .diagram-node:hover { transform: translateY(-3px); border-color: #70a8aa; box-shadow: 0 14px 25px rgba(33,72,75,.12); }
+    .diagram-node small { display: block; margin-bottom: 4px; color: var(--blue-2); font-size: 10px; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+    .diagram-node span { display: block; font-size: 13px; line-height: 1.25; font-weight: 680; }
+    .board-note { position: absolute; right: 19px; bottom: 16px; color: #70817e; font-size: 11px; }
+    .section { padding: 104px 0; }
+    .section-soft { background: #f0f2ee; }
+    .section-dark { color: white; background: #17343d; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 37px; }
+    .section-head h2, .quiz-intro h2, .closing h2 { max-width: 660px; margin: 12px 0 0; font-size: clamp(34px, 4.6vw, 57px); line-height: 1.03; font-weight: 550; letter-spacing: -.05em; }
+    .section-intro { max-width: 330px; margin: 0; color: var(--muted); font-size: 14px; }
+    .quiz-layout { display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: 70px; }
+    .quiz-intro { position: sticky; top: 40px; }
+    .quiz-intro p { max-width: 340px; margin: 18px 0 0; color: var(--muted); font-size: 15px; }
+    .quiz-aside { display: flex; align-items: center; gap: 12px; margin-top: 36px; color: #62727a; font-size: 12px; }
+    .aside-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: #e4eeeb; color: var(--blue); }
+    .aside-icon svg { width: 17px; height: 17px; }
+    .quiz-card { padding: 30px; border: 1px solid #e0e6e2; border-radius: 20px; background: var(--white); box-shadow: var(--shadow); }
+    .quiz-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px; color: #75838a; font-size: 12px; }
+    .progress { height: 4px; overflow: hidden; border-radius: 5px; background: #e8eeec; }
+    .progress-fill { height: 100%; width: 20%; border-radius: inherit; background: var(--blue-2); transition: width .4s ease; }
+    .question-view { padding-top: 28px; animation: enter .32s ease both; }
+    @keyframes enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .question-view h3 { margin: 0 0 7px; font-size: 24px; line-height: 1.2; letter-spacing: -.035em; font-weight: 650; }
+    .question-help { margin: 0 0 21px; color: var(--muted); font-size: 13px; }
+    .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .choice { min-height: 68px; padding: 13px 15px; border: 1px solid #dfe6e5; border-radius: 12px; color: var(--ink); background: white; text-align: left; cursor: pointer; transition: background-color .18s ease, border-color .18s ease, transform .18s ease; }
+    .choice:hover { border-color: #85b0b0; transform: translateY(-1px); }
+    .choice[aria-pressed="true"] { border-color: var(--blue-2); background: #edf6f4; box-shadow: inset 0 0 0 1px var(--blue-2); }
+    .choice strong { display: block; font-size: 14px; font-weight: 680; }
+    .choice small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .quiz-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 23px; padding-top: 18px; border-top: 1px solid #edf0ee; }
+    .quiz-footer .btn { min-height: 44px; padding-inline: 17px; font-size: 13px; }
+    .btn-back { padding: 0; border: 0; color: #53666d; background: transparent; font-size: 13px; cursor: pointer; }
+    .btn-back:hover { color: var(--blue); }
+    .btn-back:disabled { opacity: .35; cursor: default; }
+    .quiz-message { min-height: 19px; margin: 11px 0 0; color: #9c4b39; font-size: 12px; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { display: flex; flex-direction: column; gap: 7px; color: #43565e; font-size: 12px; font-weight: 650; }
+    .field input { width: 100%; height: 49px; padding: 0 13px; border: 1px solid #d8e1e0; border-radius: 10px; color: var(--ink); background: #fff; font-size: 14px; }
+    .field input::placeholder { color: #9aa6a8; }
+    .consent { margin-top: 12px; color: #7c898c; font-size: 10px; line-height: 1.55; }
+    .quiz-summary { display: flex; flex-wrap: wrap; gap: 6px; margin: 13px 0 18px; }
+    .summary-chip { padding: 5px 8px; border-radius: 99px; color: #42636a; background: #edf4f1; font-size: 10px; }
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .service-card { min-height: 298px; padding: 24px; display: flex; flex-direction: column; border: 1px solid #e1e5e1; border-radius: 18px; background: #fff; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+    .service-card:hover { transform: translateY(-5px); border-color: #c3d4d1; box-shadow: var(--shadow); }
+    .service-number { display: flex; align-items: center; justify-content: space-between; margin-bottom: 29px; color: #809092; font-size: 11px; letter-spacing: .08em; }
+    .service-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; color: var(--blue); background: #eaf2ef; }
+    .service-icon svg { width: 19px; height: 19px; }
+    .service-card h3 { max-width: 290px; margin: 0 0 12px; font-size: 21px; line-height: 1.16; letter-spacing: -.035em; font-weight: 660; }
+    .service-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .service-detail { margin-top: auto !important; padding-top: 21px; color: var(--blue) !important; font-size: 12px !important; font-weight: 650; }
+    .service-link { width: fit-content; margin-top: auto; padding-top: 22px; color: var(--blue); font-size: 12px; font-weight: 700; }
+    .service-link span { padding-left: 5px; }
+    .advantages { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(23,43,53,.13); border-bottom: 1px solid rgba(23,43,53,.13); }
+    .advantage { min-height: 163px; padding: 24px 22px 21px 0; }
+    .advantage + .advantage { padding-left: 22px; border-left: 1px solid rgba(23,43,53,.13); }
+    .advantage b { display: block; margin-bottom: 25px; color: var(--blue); font-size: 30px; line-height: 1; letter-spacing: -.06em; font-weight: 560; }
+    .advantage h3 { margin: 0 0 6px; font-size: 14px; font-weight: 700; }
+    .advantage p { margin: 0; color: var(--muted); font-size: 12px; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: step; }
+    .step { position: relative; padding: 22px 26px 0 0; counter-increment: step; }
+    .step::before { content: "0" counter(step); display: block; padding-bottom: 21px; color: #49a0a0; font-size: 12px; letter-spacing: .1em; }
+    .step:not(:last-child)::after { content: ""; position: absolute; top: 29px; left: 37px; right: 22px; height: 1px; background: rgba(255,255,255,.2); }
+    .step h3 { margin: 0 0 9px; font-size: 19px; letter-spacing: -.025em; font-weight: 640; }
+    .step p { max-width: 225px; margin: 0; color: #bbcacb; font-size: 13px; }
+    .section-dark .eyebrow { color: #72c4bf; }
+    .closing { padding: 100px 0; }
+    .closing-grid { display: grid; grid-template-columns: 1fr .86fr; align-items: center; gap: 65px; }
+    .closing h2 { max-width: 590px; }
+    .closing-copy { max-width: 430px; margin: 19px 0 0; color: var(--muted); font-size: 14px; }
+    .closing-card { padding: 26px; border: 1px solid #e0e6e2; border-radius: 18px; background: white; box-shadow: var(--shadow); }
+    .closing-card .field-grid { margin-bottom: 14px; }
+    .closing-card .btn { width: 100%; }
+    .form-status { min-height: 19px; margin: 10px 0 0; color: var(--blue); font-size: 12px; }
+    .footer { padding: 22px 0 28px; border-top: 1px solid rgba(23,43,53,.1); color: #768488; font-size: 11px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .footer-mark { color: var(--ink); font-weight: 700; }
+    .reveal { opacity: 0; transform: translateY(15px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .services-grid .reveal:nth-child(2), .steps .reveal:nth-child(2) { transition-delay: .08s; }
+    .services-grid .reveal:nth-child(3), .steps .reveal:nth-child(3) { transition-delay: .16s; }
+    .steps .reveal:nth-child(4) { transition-delay: .24s; }
+    @media (max-width: 900px) {
+      .wrap { width: min(100% - 40px, 760px); }
+      .hero { padding-top: 58px; }
+      .hero-under { align-items: flex-start; flex-direction: column; gap: 22px; }
+      .diagram-grid { width: 88%; margin-left: 2%; }
+      .quiz-layout { grid-template-columns: 1fr; gap: 30px; }
+      .quiz-intro { position: static; }
+      .quiz-intro p { max-width: 560px; }
+      .quiz-aside { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .service-card:last-child { grid-column: span 2; min-height: 240px; }
+      .advantages { grid-template-columns: 1fr 1fr; }
+      .advantage:nth-child(3) { padding-left: 0; border-left: 0; border-top: 1px solid rgba(23,43,53,.13); }
+      .advantage:nth-child(4) { border-top: 1px solid rgba(23,43,53,.13); }
+      .closing-grid { grid-template-columns: 1fr; gap: 30px; }
+      .closing-card { max-width: 620px; }
+    }
+    @media (max-width: 600px) {
+      html { scroll-padding-top: 16px; }
+      .wrap { width: calc(100% - 34px); }
+      .topbar { height: 66px; }
+      .brand { font-size: 11px; gap: 8px; }
+      .brand-mark { width: 29px; height: 29px; }
+      .nav { gap: 0; }
+      .nav a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 9px 13px; border: 1px solid #d6e2df; border-radius: 99px; font-size: 11px; }
+      .hero { padding: 48px 0 50px; }
+      h1 { margin-top: 17px; font-size: clamp(45px, 14vw, 68px); line-height: 1.01; }
+      .hero-copy { font-size: 14px; }
+      .actions { width: 100%; align-items: flex-start; flex-direction: column; gap: 10px; }
+      .actions .btn { width: 100%; }
+      .actions .micro { align-self: center; }
+      .pipe-board { min-height: 0; padding: 17px 14px; }
+      .pipe-board::after { top: 17px; right: 14px; font-size: 8px; }
+      .pipe-svg { display: none; }
+      .diagram-grid { width: 100%; min-height: 0; margin: 22px 0 0; grid-template-columns: 1fr; gap: 8px; }
+      .diagram-node { width: 100%; padding: 12px 13px; display: flex; align-items: center; gap: 12px; }
+      .diagram-node small { width: 50px; flex: 0 0 50px; margin: 0; }
+      .diagram-node span { font-size: 13px; }
+      .board-note { position: static; display: block; margin: 11px 0 0; font-size: 10px; }
+      .section { padding: 74px 0; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 13px; margin-bottom: 26px; }
+      .section-head h2, .quiz-intro h2, .closing h2 { font-size: 40px; }
+      .section-intro { font-size: 13px; }
+      .quiz-layout { gap: 24px; }
+      .quiz-intro p { font-size: 14px; }
+      .quiz-card { padding: 20px 16px; border-radius: 16px; }
+      .question-view { padding-top: 23px; }
+      .question-view h3 { font-size: 21px; }
+      .choice-grid { grid-template-columns: 1fr; gap: 8px; }
+      .choice { min-height: 57px; padding: 11px 13px; }
+      .choice small { font-size: 10px; }
+      .field-grid { grid-template-columns: 1fr; gap: 10px; }
+      .quiz-footer { margin-top: 18px; }
+      .quiz-footer .btn { min-height: 42px; padding-inline: 14px; }
+      .services-grid { grid-template-columns: 1fr; gap: 10px; }
+      .service-card, .service-card:last-child { grid-column: auto; min-height: 245px; padding: 21px; }
+      .service-number { margin-bottom: 22px; }
+      .advantages { grid-template-columns: 1fr 1fr; }
+      .advantage { min-height: 155px; padding: 18px 12px 17px 0; }
+      .advantage + .advantage { padding-left: 12px; }
+      .advantage:nth-child(3) { padding-left: 0; }
+      .advantage b { margin-bottom: 20px; font-size: 26px; }
+      .advantage h3 { font-size: 13px; }
+      .advantage p { font-size: 11px; }
+      .steps { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+      .step { padding-right: 13px; }
+      .step:not(:last-child)::after { display: none; }
+      .step h3 { font-size: 16px; }
+      .step p { font-size: 12px; }
+      .closing { padding: 75px 0; }
+      .closing-grid { gap: 25px; }
+      .closing-copy { font-size: 13px; }
+      .closing-card { padding: 18px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="#top" aria-label="Сантехнические работы — наверх">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4v6a5 5 0 0 0 5 5h4a5 5 0 0 1 5 5v0M5 4h4M19 20h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="5" cy="4" r="2" fill="currentColor"/><circle cx="19" cy="20" r="2" fill="currentColor"/></svg></span>
+      <span>Сантехнические работы</span>
+    </a>
+    <nav class="nav" aria-label="Главная навигация">
+      <a href="#services">Услуги</a>
+      <a href="#about">Преимущества</a>
+      <a href="#process">Как работаем</a>
+      <a class="nav-cta" href="#quiz">Подобрать решение <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="eyebrow">Частный мастер · опыт с 2010 года</div>
+      <h1 id="hero-title">Сантехника<br>от <em>разводки</em> до отопления</h1>
+      <div class="hero-under">
+        <p class="hero-copy">Работы в квартирах и новостройках, монтаж систем отопления. <strong>Расскажите, что нужно сделать</strong> — обсудим решение, объём и условия.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#quiz">Подобрать решение <span class="arrow" aria-hidden="true">↗</span></a>
+          <span class="micro">4 коротких вопроса · без расчёта наугад</span>
+        </div>
+      </div>
+      <div class="pipe-board" aria-label="Выберите направление сантехнических работ">
+        <svg class="pipe-svg" viewBox="0 0 1200 207" preserveAspectRatio="none" aria-hidden="true">
+          <path class="pipe-base" d="M-20 103H205V55H445V151H705V70H925V119H1220"/>
+          <path class="pipe-highlight" d="M-20 103H205V55H445V151H705V70H925V119H1220"/>
+          <circle class="pipe-joint" cx="205" cy="103" r="8"/><circle class="pipe-joint" cx="445" cy="55" r="8"/><circle class="pipe-joint" cx="705" cy="151" r="8"/><circle class="pipe-joint" cx="925" cy="70" r="8"/>
+          <path d="M205 103v48M445 55V18M705 151v36M925 70V25" stroke="#3f8990" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="diagram-grid">
+          <button type="button" class="diagram-node" data-work="Черновая разводка труб">
+            <small>01 / квартира</small><span>Черновая разводка</span>
+          </button>
+          <button type="button" class="diagram-node" data-work="Монтаж системы отопления">
+            <small>02 / отопление</small><span>Системы отопления</span>
+          </button>
+          <button type="button" class="diagram-node" data-work="Сантехнические работы в новостройке">
+            <small>03 / новостройка</small><span>Работы по договору</span>
+          </button>
+        </div>
+        <span class="board-note">Нажмите на направление, чтобы начать квиз</span>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="quiz" aria-labelledby="quiz-title">
+      <div class="wrap quiz-layout">
+        <div class="quiz-intro">
+          <div class="eyebrow">Подбор решения</div>
+          <h2 id="quiz-title">С чего начнём?</h2>
+          <p>Уточним основные детали. Так мастеру будет проще понять задачу и обсудить с вами следующий шаг.</p>
+          <div class="quiz-aside"><span class="aside-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Займёт пару минут</span></div>
+        </div>
+        <div class="quiz-card" id="quiz-card">
+          <div class="quiz-top"><span id="step-label">Шаг 1 из 5</span><span id="step-percent">20%</span></div>
+          <div class="progress" role="progressbar" aria-label="Прогресс квиза" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><div class="progress-fill" id="progress-fill"></div></div>
+          <div id="question-container" aria-live="polite"></div>
+          <div class="quiz-footer"><button class="btn-back" type="button" id="back-btn" disabled>← Назад</button><button class="btn btn-primary" type="button" id="next-btn">Дальше <span class="arrow" aria-hidden="true">→</span></button></div>
+          <p class="quiz-message" id="quiz-message" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">Направления работ</div><h2 id="services-title">Чем могу помочь</h2></div>
+          <p class="section-intro">Отдельные работы или комплексная задача — обсудим, что нужно именно вашему объекту.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-number"><span>01 — КВАРТИРА</span><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4v7a4 4 0 0 0 4 4h4a4 4 0 0 1 4 4v1m-12-16h4m8 16h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="4" cy="4" r="1.7" fill="currentColor"/><circle cx="20" cy="20" r="1.7" fill="currentColor"/></svg></span></div>
+            <h3>Черновая разводка труб в квартире</h3>
+            <p>Подготовка сантехнических коммуникаций для последующей отделки.</p>
+            <p class="service-detail">Один санузел, туалет и кухня — за один день.</p>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-number"><span>02 — ОТОПЛЕНИЕ</span><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4v16m5-16v16m5-16v16m5-16v16M3 7h18M3 17h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span></div>
+            <h3>Монтаж систем отопления</h3>
+            <p>Подбор состава работ и монтаж системы с учётом особенностей объекта.</p>
+            <p class="service-detail">Системы отопления любой сложности.</p>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-number"><span>03 — НОВОСТРОЙКА</span><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V5h10v15M14 10h6v10M7 8h2m-2 4h2m-2 4h2m8-1h1m-1 3h1M2 20h20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <h3>Сантехнические работы в новостройках</h3>
+            <p>Бригада работает по договору подряда: сварка, монтаж стояков и лежаков, ИТП и другие виды сантехнических работ.</p>
+            <a class="service-link" href="#quiz" data-work-link="Сантехнические работы в новостройке">Обсудить задачу <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">Рабочие принципы</div><h2 id="about-title">Понятно на каждом этапе</h2></div>
+          <p class="section-intro">Сначала разбираемся в задаче, затем согласуем объём работ и условия.</p>
+        </div>
+        <div class="advantages">
+          <article class="advantage reveal"><b>2010</b><h3>Опыт работы</h3><p>Сантехнические работы с 2010 года.</p></article>
+          <article class="advantage reveal"><b>01</b><h3>Гарантия качества</h3><p>Гарантия на выполненные работы.</p></article>
+          <article class="advantage reveal"><b>↗</b><h3>Помощь с материалами</h3><p>Помогу выбрать подходящие материалы.</p></article>
+          <article class="advantage reveal"><b>₽</b><h3>Удобный расчёт</h3><p>Наличный и безналичный расчёт.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="process" aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">Порядок работы</div><h2 id="process-title">От заявки до готового результата</h2></div>
+          <p class="section-intro" style="color:#bbcacb">Все основные детали и условия согласуем до начала работ.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal"><h3>Заявка</h3><p>Вы рассказываете, какая работа нужна.</p></article>
+          <article class="step reveal"><h3>Обсуждение</h3><p>Уточняем объект, объём и пожелания.</p></article>
+          <article class="step reveal"><h3>Согласование</h3><p>Обсуждаем материалы, условия и порядок работ.</p></article>
+          <article class="step reveal"><h3>Выполнение</h3><p>Проводим согласованные сантехнические работы.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="contact" aria-labelledby="contact-title">
+      <div class="wrap closing-grid">
+        <div class="reveal">
+          <div class="eyebrow">Обсудим вашу задачу</div>
+          <h2 id="contact-title">Подберём следующий шаг</h2>
+          <p class="closing-copy">Пройдите короткий квиз или оставьте имя и телефон — можно начать с пары слов о том, что требуется.</p>
+          <div class="actions" style="margin-top:23px"><a href="#quiz" class="btn btn-secondary">Пройти квиз <span class="arrow" aria-hidden="true">↗</span></a></div>
+        </div>
+        <form class="closing-card lead-form reveal" autocomplete="on">
+          <div class="field-grid">
+            <label class="field">Имя<input name="name" autocomplete="name" placeholder="Как к вам обращаться" required></label>
+            <label class="field">Телефон<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ваш номер телефона" required></label>
+          </div>
+          <button class="btn btn-primary" type="submit">Оставить заявку <span class="arrow" aria-hidden="true">→</span></button>
+          <p class="consent">Контактные данные нужны, чтобы связаться с вами по заявке.</p>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-inner"><span class="footer-mark">Сантехнические работы</span><span>Опыт с 2010 года</span><span>Подробности — после обсуждения задачи</span></div></footer>
+
+  <script>
+    // Перед публикацией укажите адрес сервиса, который принимает заявки.
+    const LEAD_ENDPOINT = "";
+    const questions = [
+      { key: "work", title: "Какая работа нужна?", help: "Выберите главное направление — детали уточним позже.", options: [
+        ["Черновая разводка труб", "Квартира · санузел, туалет, кухня"],
+        ["Монтаж системы отопления", "Новая система или монтаж"],
+        ["Работы в новостройке", "Договор подряда · работы бригадой"],
+        ["Другая сантехническая работа", "Опишу задачу при обсуждении"]
+      ]},
+      { key: "object", title: "На каком объекте?", help: "Это поможет понять контекст и условия.", options: [
+        ["Квартира", "В том числе квартира в новостройке"],
+        ["Частный дом", "Дом или загородный объект"],
+        ["Новостройка", "Работы по договору подряда"],
+        ["Другой объект", "Коммерческий или иной объект"]
+      ]},
+      { key: "volume", title: "Какой примерный объём?", help: "Пока достаточно приблизительной оценки.", options: [
+        ["Один санузел", "Локальный участок работ"],
+        ["Санузел, туалет и кухня", "Разводка по нескольким зонам"],
+        ["Система отопления", "Монтаж или работы по системе"],
+        ["Несколько помещений / весь объект", "Подробности обсудим отдельно"]
+      ]},
+      { key: "timing", title: "Когда планируете начать?", help: "Это предварительный ориентир, сроки согласуем по задаче.", options: [
+        ["Как можно скорее", "Готов обсудить ближайшие даты"],
+        ["В течение месяца", "Есть время спланировать работы"],
+        ["Позже", "Срок пока не определён"],
+        ["Хочу сначала обсудить", "Без выбранной даты"]
+      ]}
+    ];
+    const answers = { work: "", object: "", volume: "", timing: "", name: "", phone: "" };
+    let step = 0;
+    const questionContainer = document.getElementById("question-container");
+    const stepLabel = document.getElementById("step-label");
+    const stepPercent = document.getElementById("step-percent");
+    const progressFill = document.getElementById("progress-fill");
+    const progress = document.querySelector(".progress");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const quizMessage = document.getElementById("quiz-message");
+
+    function renderQuestion() {
+      const total = 5;
+      const pct = Math.round(((step + 1) / total) * 100);
+      stepLabel.textContent = `Шаг ${step + 1} из ${total}`;
+      stepPercent.textContent = `${pct}%`;
+      progressFill.style.width = `${pct}%`;
+      progress.setAttribute("aria-valuenow", step + 1);
+      backBtn.disabled = step === 0;
+      nextBtn.innerHTML = step === total - 1 ? 'Отправить заявку <span class="arrow" aria-hidden="true">→</span>' : 'Дальше <span class="arrow" aria-hidden="true">→</span>';
+      quizMessage.textContent = "";
+      const view = document.createElement("div");
+      view.className = "question-view";
+      if (step < 4) {
+        const q = questions[step];
+        view.innerHTML = `<h3>${q.title}</h3><p class="question-help">${q.help}</p><div class="choice-grid" role="group" aria-label="${q.title}"></div>`;
+        const grid = view.querySelector(".choice-grid");
+        q.options.forEach(([title, detail]) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "choice";
+          btn.setAttribute("aria-pressed", answers[q.key] === title ? "true" : "false");
+          btn.innerHTML = `<strong>${title}</strong><small>${detail}</small>`;
+          btn.addEventListener("click", () => {
+            answers[q.key] = title;
+            grid.querySelectorAll(".choice").forEach(choice => choice.setAttribute("aria-pressed", "false"));
+            btn.setAttribute("aria-pressed", "true");
+            quizMessage.textContent = "";
+          });
+          grid.append(btn);
+        });
+      } else {
+        const summary = ["work", "object", "volume", "timing"].map(key => answers[key]).filter(Boolean).map(value => `<span class="summary-chip">${value}</span>`).join("");
+        view.innerHTML = `<h3>Куда отправить ответ?</h3><p class="question-help">Оставьте контакты — мастер сможет обсудить задачу и условия.</p><div class="quiz-summary">${summary}</div><div class="field-grid"><label class="field">Имя<input name="name" autocomplete="name" placeholder="Как к вам обращаться" required></label><label class="field">Телефон<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ваш номер телефона" required></label></div><p class="consent">Контакты нужны, чтобы ответить на вашу заявку. Точная стоимость обсуждается после уточнения работ.</p>`;
+        view.querySelector('[name="name"]').value = answers.name;
+        view.querySelector('[name="phone"]').value = answers.phone;
+      }
+      questionContainer.replaceChildren(view);
+    }
+
+    function setStep(newStep) {
+      if (step === 4) {
+        const name = questionContainer.querySelector('[name="name"]');
+        const phone = questionContainer.querySelector('[name="phone"]');
+        if (name) answers.name = name.value.trim();
+        if (phone) answers.phone = phone.value.trim();
+      }
+      step = Math.max(0, Math.min(4, newStep));
+      renderQuestion();
+    }
+    backBtn.addEventListener("click", () => setStep(step - 1));
+    nextBtn.addEventListener("click", async () => {
+      if (step < 4) {
+        const key = questions[step].key;
+        if (!answers[key]) { quizMessage.textContent = "Выберите один вариант, чтобы продолжить."; return; }
+        setStep(step + 1);
+        return;
+      }
+      const name = questionContainer.querySelector('[name="name"]');
+      const phone = questionContainer.querySelector('[name="phone"]');
+      if (!name.reportValidity()) return;
+      if (!phone.reportValidity()) return;
+      answers.name = name.value.trim(); answers.phone = phone.value.trim();
+      await submitLead(answers, quizMessage, nextBtn);
+    });
+
+    async function submitLead(payload, statusEl, button) {
+      if (!LEAD_ENDPOINT) {
+        statusEl.textContent = "Форма не подключена к приёму заявок. Перед публикацией укажите адрес сервиса отправки.";
+        return;
+      }
+      const original = button.innerHTML;
+      button.disabled = true;
+      button.textContent = "Отправляем…";
+      statusEl.textContent = "";
+      try {
+        const response = await fetch(LEAD_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+        if (!response.ok) throw new Error("Request failed");
+        statusEl.textContent = "Заявка отправлена. Спасибо!";
+        if (button.form) button.form.reset();
+      } catch {
+        statusEl.textContent = "Не удалось отправить заявку. Попробуйте ещё раз позже.";
+      } finally {
+        button.disabled = false;
+        button.innerHTML = original;
+      }
+    }
+    document.querySelectorAll(".lead-form").forEach(form => form.addEventListener("submit", async event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const payload = { name: String(data.get("name")).trim(), phone: String(data.get("phone")).trim(), source: "Форма на странице" };
+      await submitLead(payload, form.querySelector(".form-status"), form.querySelector("button[type=submit]"));
+    }));
+    document.querySelectorAll("[data-work]").forEach(button => button.addEventListener("click", () => {
+      answers.work = button.dataset.work;
+      setStep(0);
+      document.getElementById("quiz").scrollIntoView({ behavior: "smooth" });
+    }));
+    document.querySelectorAll("[data-work-link]").forEach(link => link.addEventListener("click", () => {
+      answers.work = link.dataset.workLink;
+      renderQuestion();
+    }));
+    renderQuestion();
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
+      }), { threshold: .12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else revealItems.forEach(item => item.classList.add("is-visible"));
+  </script>
+</body>
+</html>
